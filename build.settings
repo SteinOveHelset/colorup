@@ -1,0 +1,73 @@
+--
+-- For more information on build.settings, see the Project Build Settings guide at:
+-- https://docs.coronalabs.com/guide/distribution/buildSettings
+--
+
+settings =
+{
+	orientation =
+	{
+		-- Supported values for orientation:
+		-- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
+		default = "portrait",
+		supported = { "portrait", },
+	},
+
+	--
+	-- Android section
+	--
+	android =
+	{
+		googlePlayGamesAppId = "874231189156",
+		usesPermissions =
+		{
+			"android.permission.INTERNET",
+			"com.android.vending.CHECK_LICENSE"
+		},
+		applicationChildElements =
+		{
+			[[
+				<meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-7458926770415601~7831222224"/>
+			]],
+		}
+	},
+
+	--
+	-- iOS section
+	--
+	iphone =
+	{
+		xcassets = "Images.xcassets",
+		plist =
+		{
+			UIStatusBarHidden = false,
+			UILaunchStoryboardName = "LaunchScreen",
+		},
+	},
+
+	--
+	-- Plugins section
+	--
+	plugins =
+	{
+		-- Play services
+		["plugin.gpgs.v2"] = {
+			publisherId = "com.coronalabs",
+			supportedPlatforms = {["android"] = true, ["android-kindle"] = true}
+		},
+		-- Admob
+		["plugin.admob"] = {
+			publisherId = "com.coronalabs"
+		}
+	},
+
+	--
+	-- Project section
+	--
+	excludeFiles =
+	{
+		-- Exclude unnecessary files for each platform
+		all = { "Icon.png", "Icon-*dpi.png", "Images.xcassets", },
+		android = { "LaunchScreen.storyboardc", },
+	},
+}
